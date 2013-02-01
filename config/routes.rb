@@ -1,6 +1,13 @@
 Iter8::Application.routes.draw do
   devise_for :users
 
+  resources :iterables, shallow: true do
+    resources :posts, shallow: true do
+      resources :comments
+    end
+  end
+
+  root :to => "pages#landing"
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

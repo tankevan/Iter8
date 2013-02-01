@@ -1,0 +1,5 @@
+<%= form_tag({:controller => "posts", :action => "create"}) do %>
+  <%= label_tag(:new_post, "Description") %>
+  <%= text_area_tag(:new_post) %>
+  <%= submit_tag("Iterate!") %>
+<% end %>

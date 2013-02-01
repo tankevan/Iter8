@@ -1,0 +1,5 @@
+<%= form_tag({:controller => "comments", :action => "create"}) do %>
+  <%= label_tag(:new_comment, "Comment") %>
+  <%= text_field_tag(:new_comment) %>
+  <%= submit_tag("Critique!") %>
+<% end %>

@@ -1,0 +1,5 @@
+<%= form_tag({:controller => "iterables", :action => "create"}) do %>
+  <%= label_tag(:new_iterable, "Name") %>
+  <%= text_field_tag(:new_iterable) %>
+  <%= submit_tag("Start Iterating") %>
+<% end %>

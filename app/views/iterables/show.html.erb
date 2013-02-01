@@ -1,0 +1,15 @@
+<%= @iterable.name %> 
+
+<%= link_to "New Entry", new_iterable_post_path(@iterable) %> 
+
+<% for post in @posts %>
+	<p><%= post.post %><%= link_to "Add Comments", new_post_comment_path(post) %></p>
+		
+	<% if post.comments.all %>
+		<ul>
+			<% for comment in post.comments.all %>
+				<li><%=comment.comment%></li>
+			<% end %>
+		</ul>
+	<% end %>
+<% end %> 
