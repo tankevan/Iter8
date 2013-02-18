@@ -16,6 +16,7 @@ class PostsController < ApplicationController
 		if @post.save
 			flash[:success] = "Post created!"
 			redirect_to iterable_path(@iterable)
+			@iterable.touch
 		else
 			flash[:notice] = "Could not create post"
 			redirect_to new_post_path

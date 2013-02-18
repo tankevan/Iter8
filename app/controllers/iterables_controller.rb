@@ -1,7 +1,7 @@
 class IterablesController < ApplicationController
 
 	def index
-		@iterables = current_user.iterables.all
+		@iterables = current_user.iterables.find(:all, :order => "updated_at DESC")
 	end
 
 	def show
@@ -27,6 +27,14 @@ class IterablesController < ApplicationController
 	end
 
 	def update
+		@iterable = Iterable.find(params[:id])
+		if @iterable.update_attributes(:name => params[:new_iterable])
+			flash[:success] = "Iterable name updated!"
+			redirect_to iterables_path
+		else
+			flash[:notice] = "Could not update iterable name"
+			redirect_to edit_iterable_path(@iterable)
+		end
 	end
 
 	def destroy

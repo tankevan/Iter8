@@ -16,6 +16,7 @@ class CommentsController < ApplicationController
 		if @comment.save
 			flash[:success] = "Comment posted!"
 			redirect_to iterable_path(@iterable)
+			@iterable.touch
 		else
 			flash[:notice] = "Unable to post comment"
 			redirect_to new_post_comment_path(@post)

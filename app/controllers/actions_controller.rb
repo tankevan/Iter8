@@ -13,6 +13,7 @@ class ActionsController < ApplicationController
 		if @action.save
 			flash[:success] = "Action created!"
 			redirect_to iterable_path(@iterable)
+			@iterable.touch
 		else
 			flash[:notice] = "Unable to create action"
 			redirect_to new_post_comment_path(@post)

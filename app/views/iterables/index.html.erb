@@ -5,8 +5,10 @@
 </div>
 
 <% for iterable in @iterables %>
-	<p class="title">
+<div class="iterable">
 		<%= link_to iterable.name, iterable_path(iterable) %>
+		<%= link_to "edit", edit_iterable_path(iterable), :class => "edit-button" %>
 		<%= link_to "x", iterable_path(iterable), :method => :delete, :class => "pull-right" %>
-	</p>
+</div>
 <% end %>
+
