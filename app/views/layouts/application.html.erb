@@ -6,9 +6,27 @@
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+<div class="navbar">
+  <div class="navbar-inner">
+    <%= link_to "Iter8", iterables_path, :class => "brand" %>
+    <ul class="nav pull-right">
+    <% if current_user %>
+      <li><%= link_to "Account", edit_user_registration_path %></li>
+	    <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+    <% else %>
+      <li><%= link_to "Sign In", new_user_session_path %></li>
+	    <li><%= link_to "Register", new_user_registration_path %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="span6 offset3">
+	<%= yield %>
+</div>
 
 </body>
 </html>

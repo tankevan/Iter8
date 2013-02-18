@@ -2,7 +2,9 @@ Iter8::Application.routes.draw do
   devise_for :users
 
   resources :iterables, shallow: true do
+    resources :iterablesusers, :only => [:new, :create, :destroy]
     resources :posts, shallow: true do
+      resources :actions
       resources :comments
     end
   end

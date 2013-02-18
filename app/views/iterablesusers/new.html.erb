@@ -1,0 +1,5 @@
+<%= form_tag({:controller => "iterablesusers", :action => "create"}) do %>
+  <%= label_tag(:new_user, "User's email:") %>
+  <%= text_field_tag(:new_user) %>
+  <%= submit_tag("Add User!") %>
+<% end %>

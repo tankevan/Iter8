@@ -1,8 +1,12 @@
-<%= link_to "Account", edit_user_registration_path %>
-<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-
-<%= link_to "Create New Iterable", new_iterables_path %>
+<div class="header">
+	<h1>All Iterables</h1>
+	<%= link_to "Create New Iterable", new_iterable_path, :class => "btn btn-primary btn-medium" %>
+	<hr>
+</div>
 
 <% for iterable in @iterables %>
-	<p><%= link_to iterable.name, iterable_path(iterable)  %></p>
+	<p class="title">
+		<%= link_to iterable.name, iterable_path(iterable) %>
+		<%= link_to "x", iterable_path(iterable), :method => :delete, :class => "pull-right" %>
+	</p>
 <% end %>

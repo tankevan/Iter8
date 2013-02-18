@@ -1,5 +1,6 @@
-<%= form_tag({:controller => "iterables", :action => "create"}) do %>
+<%= form_tag({:controller => "iterables", :action => "create"}, :class => "form-inline") do %>
+  <legend>Create New Iterable</legend>
   <%= label_tag(:new_iterable, "Name") %>
   <%= text_field_tag(:new_iterable) %>
-  <%= submit_tag("Start Iterating") %>
+  <%= submit_tag("Start Iterating", :class => "btn btn-medium") %>
 <% end %>

@@ -14,8 +14,10 @@ class CommentsController < ApplicationController
 		@comment = @post.comments.build(:comment => params[:new_comment])
 		@iterable = current_user.iterables.find(@post.iterable_id)
 		if @comment.save
+			flash[:success] = "Comment posted!"
 			redirect_to iterable_path(@iterable)
 		else
+			flash[:notice] = "Unable to post comment"
 			redirect_to new_post_comment_path(@post)
 		end
 	end
@@ -27,6 +29,13 @@ class CommentsController < ApplicationController
 	end
 
 	def destroy
+		@comment = Comment.find(params[:comment_id])
+		if @comment.destroy
+			flash[:success] = "Comment deleted!"
+		else
+			flash[:notice] = "Unable to delete comment"
+		end
+		redirect_to iterable_path(params[:id])
 	end
 	
 end

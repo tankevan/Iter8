@@ -2,11 +2,11 @@ class IterablesController < ApplicationController
 
 	def index
 		@iterables = current_user.iterables.all
-
 	end
 
 	def show
 		@iterable = current_user.iterables.find(params[:id])
+		@users = @iterable.users.all
 		@posts = @iterable.posts.all
 	end
 
@@ -14,8 +14,7 @@ class IterablesController < ApplicationController
 	end
 
 	def create
-		@iterable = current_user.iterables.build(:name => params[:new_iterable])
-		if @iterable.save
+		if current_user.iterables.create(:name => params[:new_iterable])
 			flash[:success] = "Iterable created!"
 			redirect_to iterables_path
 		else
@@ -31,6 +30,13 @@ class IterablesController < ApplicationController
 	end
 
 	def destroy
+		@iterable = Iterable.find(params[:id])
+		if @iterable.destroy
+			flash[:success] = "Iterable deleted!"
+		else
+			flash[:notice] = "Unable to delete iterable"
+		end
+		redirect_to iterables_path
 	end
 
 end

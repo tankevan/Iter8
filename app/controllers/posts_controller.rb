@@ -4,6 +4,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@post = Post.find(params[:id])
 	end
 
 	def new
@@ -28,6 +29,13 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
+		@post = Post.find(params[:post_id])
+		if @post.destroy
+			flash[:success] = "Post deleted!"
+		else
+			flash[:notice] = "Unable to delete post"
+		end
+		redirect_to iterable_path(params[:id])
 	end
 	
 end

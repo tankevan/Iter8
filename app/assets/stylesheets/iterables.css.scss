@@ -1,3 +1,23 @@
 // Place all the styles related to the iterables controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.header {
+	position: relative;
+}
+
+div.header hr {
+	margin-top: 0;
+}
+
+a.btn-primary.btn-medium {
+	position: absolute;
+	top: 0.5em;
+	right: 0;
+}
+
+p.title {
+	font-size: 1.4em;
+	margin-top: 1em;
+}
+
