@@ -1,0 +1,6 @@
+<div class="post-form">
+<%= form_for [@iterable, @post], remote: true do |f|%>
+  <%= f.text_area :post, :class => "span6", :rows => "3", :placeholder => "What would you like to iterate on today?" %>
+  <%= f.submit "Iterate!", :class => "btn btn-info pull-right " %>
+<% end %>
+</div>

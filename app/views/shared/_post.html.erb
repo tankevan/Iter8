@@ -1,6 +1,15 @@
-<div class="post-form">
-<%= form_for [@iterable, @post] do |f|%>
-  <%= f.text_area :post, :class => "span6", :rows => "3", :placeholder => "What would you like to iterate on today?" %>
-  <%= f.submit "Iterate!", :class => "btn btn-info pull-right " %>
-<% end %>
+<div class='post'>
+	<div class='timestamp span1'>
+		<h5><%= post.created_at.in_time_zone('Singapore').strftime('%l:%M%p') %></h5>
+	</div>
+	<div class='content span5'>
+		<p>
+		   <%= post.post %> 
+		</p>
+		<p>
+			<%= link_to 'action!', new_post_action_path(post), :class => 'action-link' %> |
+			<%= link_to 'delete', post_path(post), :method => :delete %>
+		</p>
+	</div>
 </div>
+
