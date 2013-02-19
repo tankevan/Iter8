@@ -7,7 +7,8 @@ class IterablesController < ApplicationController
 	def show
 		@iterable = current_user.iterables.find(params[:id])
 		@users = @iterable.users.all
-		@posts = @iterable.posts.all
+		@posts = @iterable.posts.find(:all, :order => "created_at DESC")
+		@post = @iterable.posts.new
 	end
 
 	def new

@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
 	def create
 		@iterable = current_user.iterables.find(params[:iterable_id])
-		@post = @iterable.posts.build(:post => params[:new_post])
+		@post = @iterable.posts.build(params[:post])
 		if @post.save
 			flash[:success] = "Post created!"
 			redirect_to iterable_path(@iterable)

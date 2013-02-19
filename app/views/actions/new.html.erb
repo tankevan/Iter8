@@ -1,5 +1,5 @@
 <%= form_tag({:controller => "actions", :action => "create"}) do %>
   <%= label_tag(:new_action, "Action") %>
-  <%= text_field_tag(:new_action) %>
+  <%= text_area_tag(:new_action) %>
   <%= submit_tag("Act!") %>
 <% end %>

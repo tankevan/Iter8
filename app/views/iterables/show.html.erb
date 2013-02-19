@@ -1,5 +1,18 @@
 <h3><%= @iterable.name %></h3>
 
+<div class="side-column well visible-phone">
+	<%= link_to "Add New User", new_iterable_iterablesuser_path(@iterable) %>
+
+	<% for user in @users %>
+		<div class="inner-container">
+			<p><%= user.email %></p>
+			<% if current_user.id != user.id %>	
+				<%= link_to "x", iterablesuser_path(:user_deleted => user.id), :method => "delete", :class => "delete-button" %>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+
 <div class="well">
 <% for post in @posts %>
 	<ul>
@@ -13,22 +26,12 @@
 <% end %>
 </div>
 
-<%= link_to "Add New User", new_iterable_iterablesuser_path(@iterable) %>
-
-<% for user in @users %>
-	<p><%= user.email %>
-	<% if current_user.id != user.id %>	
-		<span><%= link_to "x", iterablesuser_path(:user_deleted => user.id), :method => "delete" %></span>
-	<% end %>
-	</p>
-<% end %>
-
-<%= link_to "New Entry", new_iterable_post_path(@iterable) %> 
+<%= render :partial => "shared/post" %>
 
 <% for post in @posts %>
 <div class="post">
 	<div class="timestamp span1">
-		<h5><%= post.created_at.strftime("%l:%m%p")%></h5>
+		<h5><%= post.created_at.in_time_zone('Singapore').strftime("%l:%M%p")%></h5>
 	</div>
 	<div class="content span5">
 		<p>
@@ -36,8 +39,22 @@
 		</p>
 		<p>
 			<%= link_to "action!", new_post_action_path(post), :class => "action-link" %> |
-			<%= link_to "delete", post_path(:post_id => post.id), :method => :delete, :class => "delete-button" %>
+			<%= link_to "delete", post_path(:post_id => post.id), :method => :delete %>
 		</p>
 	</div>
 </div>
 <% end %> 
+
+<div class="side-column well span2 hidden-phone">
+	<%= link_to "Add New User", new_iterable_iterablesuser_path(@iterable) %>
+
+	<% for user in @users %>
+		<div class="inner-container">
+			<p><%= user.email %></p>
+			<% if current_user.id != user.id %>	
+				<%= link_to "x", iterablesuser_path(:user_deleted => user.id), :method => "delete", :class => "delete-button" %>
+			<% end %>
+		</div>
+	<% end %>
+	</div>
+</div>

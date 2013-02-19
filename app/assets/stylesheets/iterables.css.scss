@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+div.span6.offset3 {
+	position:relative;
+}
+
 div.header {
 	position: relative;
 }
@@ -23,7 +27,6 @@ div.iterable {
 
 div.timestamp.span1 {
 	margin-left: 0;
-	text-align: center;
 }
 
 div.timestamp.span1 h5 {
@@ -37,4 +40,26 @@ div.content.span5 {
 
 div.content.span5 p {
 	position: relative;
+}
+
+input.btn.btn-info.pull-right {
+	margin-left: 80%;
+}
+
+div.side-column.well.span2.hidden-phone {
+	position: absolute;
+	right: -17em;
+	top:0;
+	margin-top: 2em;
+}
+
+div.inner-container {
+	position: relative;
+	padding-right: 0.5em;
+}
+
+a.delete-button {
+	position: absolute;
+	top: 0;
+	right: 0;
 }
