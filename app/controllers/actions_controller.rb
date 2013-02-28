@@ -13,7 +13,6 @@ class ActionsController < ApplicationController
 		if @action.save
 			flash[:success] = "Action created!"
 			redirect_to iterable_path(@iterable)
-			@iterable.touch
 		else
 			flash[:notice] = "Unable to create action"
 			redirect_to new_post_comment_path(@post)
@@ -27,13 +26,12 @@ class ActionsController < ApplicationController
 	end
 
 	def destroy
-		@action = Action.find(params[:action_id])
-		if @action.destroy
-			flash[:success] = "Action deleted!"
-		else
-			flash[:notice] = "Unable to delete action"
+		@action = Action.find(params[:action_id]).destroy
+		respond_to do |format|
+			format.html { flash[:success] = "Action deleted!"
+						  redirect_to iterable_path(params[:id])}
+			format.js
 		end
-		redirect_to iterable_path(params[:id])
 	end
 
 end

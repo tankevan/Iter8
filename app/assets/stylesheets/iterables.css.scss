@@ -20,9 +20,25 @@ a.btn-primary.btn-medium {
 	right: 0;
 }
 
-div.iterable {
+a.btn-primary.btn-medium.header {
+	margin-right: 8.5em;
+}
+
+ul#iterables {
+	margin: 0;
+}
+
+li.iterable {
 	font-size: 1.4em;
 	margin-top: 1em;
+	list-style: none;
+}
+
+div.list-header {
+	font-size: 1em;
+	line-height: 1.5em;
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
 }
 
 div.timestamp.span1 {
@@ -62,4 +78,8 @@ a.delete-button {
 	position: absolute;
 	top: 0;
 	right: 0;
+}
+
+div.new-user-button {
+	margin-bottom: 0.8em;
 }

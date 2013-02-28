@@ -1,6 +1,10 @@
-<%= form_tag({:controller => "iterables", :action => "update"}, :method => "put") do %>
+<%= form_for @iterable, :url=>iterable_path(@iterable), :html=>{:method=>:put} do |f| %>
   <legend>Change Iterable Name</legend>
-  <%= label_tag(:new_iterable, "New name") %>
-  <%= text_field_tag(:new_iterable) %>
-  <%= submit_tag("Start Iterating", :class => "btn btn-medium") %>
+  <%= f.label :name, "New name" %>
+  <%= f.text_field :name %>
+  <%= f.label :tag_list, "Tags" %>
+  <%= f.text_field :tag_list %>
+  <%= f.submit "Start Iterating", :class => "btn btn-medium" %>
 <% end %>
+
+<%= @tags %>

@@ -16,8 +16,7 @@ class PostsController < ApplicationController
 		@post = @iterable.posts.find_all_by_post(params[:post][:post]).last
 		respond_to do |format|
 			format.html { flash[:success] = "Post created!"
-						  redirect_to iterable_path(@iterable)
-						  @iterable.touch }
+						  redirect_to iterable_path(@iterable) }
 			format.js
 		end
 	end
@@ -29,13 +28,12 @@ class PostsController < ApplicationController
 	end
 
 	def destroy
-		@post = Post.find(params[:id])
-		if @post.destroy
-			flash[:success] = "Post deleted!"
-		else
-			flash[:notice] = "Unable to delete post"
+		@post = Post.find(params[:id]).destroy
+		respond_to do |format|
+			format.html { flash[:success] = "Post deleted!"
+						  redirect_to iterable_path(@post.iterable_id) }
+			format.js
 		end
-		redirect_to iterable_path(@post.iterable_id)
 	end
 	
 end

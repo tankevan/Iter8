@@ -1,6 +1,11 @@
 Iter8::Application.routes.draw do
   devise_for :users
 
+  resources :iterables do 
+    collection { post :sort}
+  end
+
+
   resources :iterables, shallow: true do
     resources :iterablesusers, :only => [:new, :create, :destroy]
     resources :posts, shallow: true do

@@ -4,9 +4,10 @@
 <% for post in @posts %>
 	<ul>
 		<% for action in post.actions.all %>
-			<li><%= action.action %>
+			<li id="action_<%= action.id %>">
+				<%= action.action %>
 				<%= link_to "show", post_path(post) %>
-				<%= link_to "x", action_path(:action_id => action.id), :method => "delete" %>
+				<%= link_to "x", action_path(:action_id => action.id), :method => "delete", :confirm => "Are you sure?" , :remote => true %>
 			</li>
 		<% end %>
 	</ul>
@@ -20,13 +21,14 @@
 </div>
 
 <div class="side-column well span2">
-	<%= link_to "Add New User", new_iterable_iterablesuser_path(@iterable) %>
+
+	<div class="new-user-button"> <%= link_to "Add New User", new_iterable_iterablesuser_path(@iterable) %> </div>
 
 	<% for user in @users %>
 		<div class="inner-container">
 			<p><%= user.email %></p>
 			<% if current_user.id != user.id %>	
-				<%= link_to "x", iterablesuser_path(:user_deleted => user.id), :method => "delete", :class => "delete-button" %>
+				<%= link_to "x", iterablesuser_path(:user_deleted => user.id), :method => "delete", :class => "delete-button", :confirm => "Are you sure?" %>
 			<% end %>
 		</div>
 	<% end %>

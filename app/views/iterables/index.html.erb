@@ -1,14 +1,23 @@
 <div class="header">
 	<h1>All Iterables</h1>
-	<%= link_to "Create New Iterable", new_iterable_path, :class => "btn btn-primary btn-medium" %>
+	<%= link_to "New Iterable", new_iterable_path(:is_header => false), :class => "btn btn-primary btn-medium" %>
+	<%= link_to "New Header", new_iterable_path(:is_header => true), :class => "btn btn-primary btn-medium header" %>
 	<hr>
 </div>
-
+<ul id="iterables" data-update-url="<%= sort_iterables_url %>">
 <% for iterable in @iterables %>
-<div class="iterable">
-		<%= link_to iterable.name, iterable_path(iterable) %>
-		<%= link_to "edit", edit_iterable_path(iterable), :class => "edit-button" %>
-		<%= link_to "x", iterable_path(iterable), :method => :delete, :class => "pull-right" %>
-</div>
+	<%= content_tag_for :li, iterable do %>
+		<% if iterable.is_header == true %>
+			<div class="list-header">
+				<%= iterable.name %> 
+				<%= link_to "x", iterable_path(iterable), :method => :delete, :class => "pull-right", :confirm => "Are you sure?", :remote => true%>
+			</div>
+		<% else %>
+			<%= link_to iterable.name, iterable_path(iterable) %>
+			<%= link_to "edit", edit_iterable_path(iterable), :class => "edit-button" %>
+			<%= link_to "x", iterable_path(iterable), :method => :delete, :class => "pull-right", :confirm => "Are you sure?", :remote => true%>
+		<% end %>
+	<% end %>
 <% end %>
+</ul>
 

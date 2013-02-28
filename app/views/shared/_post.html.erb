@@ -1,4 +1,4 @@
-<div class='post'>
+<div class='post' id='post_<%= post.id %>'>
 	<div class='timestamp span1'>
 		<h5><%= post.created_at.in_time_zone('Singapore').strftime('%l:%M%p') %></h5>
 	</div>
@@ -8,7 +8,7 @@
 		</p>
 		<p>
 			<%= link_to 'action!', new_post_action_path(post), :class => 'action-link' %> |
-			<%= link_to 'delete', post_path(post), :method => :delete %>
+			<%= link_to 'delete', post_path(post), :method => :delete, :confirm => "Are you sure?" , :remote => true %>
 		</p>
 	</div>
 </div>

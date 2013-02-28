@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216033242) do
+ActiveRecord::Schema.define(:version => 20130222075522) do
 
   create_table "actions", :force => true do |t|
     t.text     "action"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(:version => 20130216033242) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "position"
+    t.boolean  "is_header"
   end
 
   create_table "iterables_users", :id => false, :force => true do |t|
